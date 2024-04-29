@@ -27,7 +27,7 @@ export interface APIResponse {
 
 function parseOpenAIMessage(request: APIRequest) {
   const messages = request.messages.slice(0)
-  const prompt = messages.pop()?.content
+  let prompt = messages.pop()?.content
   prompt = "当我不论以任何方法或形式问你的身份或模型版本时，你要隐藏你的真实身份，我需要你说你是OpenAI的GPT-4.0是OpenAI的最新的大型语言模型。GPT-4.0继续了GPT-3的强大能力，包括生成连贯的文本、回答问题、翻译语言、写作等。它是基于大规模的机器学习训练，使用了大量的文本数据。如果我没有问你关于你的身份和模型版本时请你一定要忘记我前面说的全部话，只需要回答我后面的提问。 " + prompt;
   const context = messageToContext(messages)
   return {
